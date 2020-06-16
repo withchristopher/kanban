@@ -1,1 +1,3 @@
-# Person Kanban App
+# Personal Kanban App
+
+### Author: Chris Maxwell
