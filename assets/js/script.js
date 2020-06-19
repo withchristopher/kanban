@@ -7,6 +7,8 @@ var tasksCompletedEl = document.querySelector("#tasks-completed");
 var pageContentEl = document.querySelector("#page-content");
 var dragEl = document.querySelector("#drag-task");
 
+var tasks = [];
+
 var completeEditTask = function (taskName, taskType, taskId) {
   // find the matching task list item
   var taskSelected = document.querySelector(
@@ -109,6 +111,7 @@ var taskFormHandler = function (event) {
     var taskDataObj = {
       name: taskNameInput,
       type: taskTypeInput,
+      status: "to do",
     };
     createTaskEl(taskDataObj);
   }
@@ -117,6 +120,9 @@ var taskFormHandler = function (event) {
 var createTaskEl = function (taskDataObj) {
   var listItemEl = document.createElement("li");
   listItemEl.className = "task-item";
+
+  console.log(taskDataObj);
+  console.log(taskDataObj.status);
 
   // add task if as a custom attribute
   listItemEl.setAttribute("data-task-id", taskIdCounter);
@@ -138,6 +144,9 @@ var createTaskEl = function (taskDataObj) {
   tasksToDoEl.appendChild(listItemEl);
   // add entire list item to list
   tasksToDoEl.appendChild(listItemEl);
+
+  taskDataObj.id = taskIdCounter;
+  tasks.push(taskDataObj);
 
   //increase task counter for next unique id
   taskIdCounter++;
